@@ -739,7 +739,9 @@ class IntelPackage(PackageBase):
         elif matches:
             # TODO: Confirm that this covers clang (needed on Linux only)
             gcc_version = Version(matches.groups()[1])
-            if gcc_version >= ver('4.7'):
+            if self.version >= ver('2020.0'):
+                abi = 'gcc4.8'
+            elif gcc_version >= ver('4.7'):                
                 abi = 'gcc4.7'
             elif gcc_version >= ver('4.4'):
                 abi = 'gcc4.4'
